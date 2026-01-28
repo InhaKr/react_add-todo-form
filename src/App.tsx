@@ -24,10 +24,10 @@ export const App = () => {
     setShowUserError(!isUserValid);
 
     if (isTitleValid && isUserValid) {
-      const selectedUser = usersFromServer.find(u => u.id === userId);
+      const selectedUser = usersFromServer.find(user => user.id === userId);
 
       const nextId =
-        todos.length === 0 ? 1 : Math.max(...todos.map(t => t.id)) + 1;
+        todos.length === 0 ? 1 : Math.max(...todos.map(todo => todo.id)) + 1;
 
       const newTodo = {
         id: nextId,
@@ -47,6 +47,15 @@ export const App = () => {
       setUserId(0);
     }
   };
+
+  const todosWithUsers = todos.map(todo => {
+    const user = usersFromServer.find(userOne => userOne.id === todo.userId);
+
+    return {
+      ...todo,
+      user: todo.user || user,
+    };
+  });
 
   return (
     <div className="App">
@@ -107,7 +116,7 @@ export const App = () => {
           Add
         </button>
       </form>
-      <TodoList todos={todos} />
+      <TodoList todos={todosWithUsers} />
     </div>
   );
 };

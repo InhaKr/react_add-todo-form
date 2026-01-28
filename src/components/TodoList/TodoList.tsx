@@ -1,23 +1,24 @@
 import { UserInfo } from '../UserInfo';
+import { TodoListProps } from '../../types/Todo';
 
-type User = {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-};
+// type User = {
+//   id: number;
+//   name: string;
+//   username: string;
+//   email: string;
+// };
 
-type Todo = {
-  id: number;
-  title: string;
-  completed: boolean;
-  userId: number;
-  user?: User;
-};
+// type Todo = {
+//   id: number;
+//   title: string;
+//   completed: boolean;
+//   userId: number;
+//   user?: User;
+// };
 
-type TodoListProps = {
-  todos: Todo[];
-};
+// type TodoListProps = {
+//   todos: Todo[];
+// };
 
 export const TodoList = ({ todos }: TodoListProps) => {
   return (
