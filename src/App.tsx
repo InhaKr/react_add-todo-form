@@ -26,6 +26,10 @@ export const App = () => {
     if (isTitleValid && isUserValid) {
       const selectedUser = usersFromServer.find(user => user.id === userId);
 
+      if (!selectedUser) {
+        return;
+      }
+
       const nextId =
         todos.length === 0 ? 1 : Math.max(...todos.map(todo => todo.id)) + 1;
 
